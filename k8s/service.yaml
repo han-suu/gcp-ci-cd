@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-app-vite
+spec:
+  selector:
+     run: my-app-vite
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5173
+  type: LoadBalancer

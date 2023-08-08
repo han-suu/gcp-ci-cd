@@ -1,0 +1,39 @@
+steps:
+# Step 1
+- name: 'gcr.io/cloud-builders/docker' 
+  entrypoint: 'bash'
+  args: [
+   '-c', 
+   'docker pull gcr.io/$PROJECT_ID/my-app-vite:latest || exit 0'
+  ]
+# Step 2
+- name: gcr.io/cloud-builders/docker
+  args: [
+   'build', 
+   '-t', 
+   'gcr.io/$PROJECT_ID/my-app-vite:latest',
+   '.'
+  ]
+  dir: 'my-app-vite'
+# Step 3
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'k8s/']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-f'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-app-vite'
+# Step 4
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: [
+   'set', 
+   'image', 
+   'deployment', 
+   'my-app-vite', 
+   'my-app-vite=gcr.io/$PROJECT_ID/my-app-vite:latest'
+  ]
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-f'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-app-vite'
+  # Push the image to Google Container Registry with the latest tag
+images: [
+   'gcr.io/$PROJECT_ID/my-app-vite:latest'
+  ]

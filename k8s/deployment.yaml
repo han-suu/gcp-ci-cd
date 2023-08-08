@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: my-app-vite
+  name: my-app-vite
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: my-app-vite
+  template:
+    metadata:
+      labels:
+        run: my-app-vite
+    spec:
+      containers:
+      - image: gcr.io/testing-394500/my-app-vite:latest #Replace [PROJECT-ID] accordingly
+        name: my-app-vite
+        ports:
+        - containerPort: 8080
