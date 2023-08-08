@@ -14,7 +14,7 @@ steps:
    'gcr.io/$PROJECT_ID/my-app-vite:latest',
    '.'
   ]
-  dir: 'my-app-vite'
+  dir: 'gcp-ci-cd'
 # Step 3
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'k8s/']
