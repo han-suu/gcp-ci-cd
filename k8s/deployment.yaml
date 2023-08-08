@@ -18,4 +18,4 @@ spec:
       - image: gcr.io/testing-394500/my-app-vite:latest #Replace [PROJECT-ID] accordingly
         name: my-app-vite
         ports:
-        - containerPort: 8080
+        - containerPort: 5173
