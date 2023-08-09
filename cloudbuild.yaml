@@ -19,7 +19,7 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'k8s/']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
+  # - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
   - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-app-vite'
 # Step 4
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -31,7 +31,7 @@ steps:
    'my-app-vite=gcr.io/$PROJECT_ID/my-app-vite:latest'
   ]
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
+  # - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
   - 'CLOUDSDK_CONTAINER_CLUSTER=gke-my-app-vite'
   # Push the image to Google Container Registry with the latest tag
 images: [
