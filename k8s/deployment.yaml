@@ -17,5 +17,6 @@ spec:
       containers:
       - image: gcr.io/testing-394500/my-app-vite:latest #Replace [PROJECT-ID] accordingly
         name: my-app-vite
+        imagePullPolicy: Always
         ports:
         - containerPort: 5173
